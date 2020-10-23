@@ -41,11 +41,21 @@ actions_toolkit_1.Toolkit.run(function (tool) { return __awaiter(void 0, void 0,
     var pr, labels_wip;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, tool.github.pulls.get(tool.context.pullRequest)];
+            case 0:
+                console.log('successfully run.');
+                return [4 /*yield*/, tool.github.pulls.get(tool.context.pullRequest)];
             case 1:
                 pr = _a.sent();
                 labels_wip = pr.data.labels.filter(function (label) { return label.name === 'WIP'; });
+                console.log(pr.data.labels);
+                console.log(labels_wip);
                 if (!labels_wip.length) return [3 /*break*/, 3];
+                console.log({
+                    sha: pr.data.merge_commit_sha,
+                    state: 'pending',
+                    owner: tool.context.pullRequest.owner,
+                    repo: tool.context.pullRequest.repo
+                });
                 return [4 /*yield*/, tool.github.repos.createCommitStatus({
                         sha: pr.data.merge_commit_sha,
                         state: 'pending',
