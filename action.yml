@@ -3,4 +3,5 @@ description: 'Set status to pending if WIP label exists'
 author: 'CuberL'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'dist.min/index.js'
+  
