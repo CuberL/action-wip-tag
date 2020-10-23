@@ -57,7 +57,7 @@ actions_toolkit_1.Toolkit.run(function (tool) { return __awaiter(void 0, void 0,
                     repo: tool.context.pullRequest.repo
                 });
                 return [4 /*yield*/, tool.github.repos.createCommitStatus({
-                        sha: pr.data.merge_commit_sha,
+                        sha: pr.data.head.sha,
                         state: 'pending',
                         owner: tool.context.pullRequest.owner,
                         repo: tool.context.pullRequest.repo
@@ -66,7 +66,7 @@ actions_toolkit_1.Toolkit.run(function (tool) { return __awaiter(void 0, void 0,
                 _a.sent();
                 return [3 /*break*/, 5];
             case 3: return [4 /*yield*/, tool.github.repos.createCommitStatus({
-                    sha: pr.data.merge_commit_sha,
+                    sha: pr.data.head.sha,
                     state: 'success',
                     owner: tool.context.pullRequest.owner,
                     repo: tool.context.pullRequest.repo

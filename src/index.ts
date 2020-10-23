@@ -17,7 +17,7 @@ Toolkit.run(async tool => {
         )
         await tool.github.repos.createCommitStatus(
             {
-                sha: pr.data.merge_commit_sha,
+                sha: pr.data.head.sha,
                 state: 'pending',
                 owner: tool.context.pullRequest.owner,
                 repo: tool.context.pullRequest.repo
@@ -26,7 +26,7 @@ Toolkit.run(async tool => {
     } else{
         await tool.github.repos.createCommitStatus(
             {
-                sha: pr.data.merge_commit_sha,
+                sha: pr.data.head.sha,
                 state: 'success',
                 owner: tool.context.pullRequest.owner,
                 repo: tool.context.pullRequest.repo
